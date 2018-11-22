@@ -1,0 +1,11 @@
+prefix=@DEST_DIR@
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libpseudogpio
+Description: Provides GPIO pseudo-pins to any application
+Version: 0.1
+
+Libs: -L${libdir} -lpseudogpio
+Cflags: -I${includedir}
