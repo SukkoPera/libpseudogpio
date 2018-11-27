@@ -152,7 +152,7 @@ This command requests the status of a digital pseudopin. The reply is a single b
   <tr align="center">
     <th>Meaning</th>
     <td colspan="1">0</td>
-    <td colspan="1">0</td>
+    <td colspan="1">1</td>
     <td colspan="1">1</td>
     <td colspan="4">Pseudopin #</td>
     <td colspan="1">Level</td>
