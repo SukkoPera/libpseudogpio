@@ -1,6 +1,12 @@
+# PseudoGPIO
+
+PseudoGPIO is a C++ library that allows an application running on a computer to control and use GPIO pins of an Arduino (or similar) board connected through USB through an API similar to the Arduino/Wiring one.
+
+## Protocol
+
 PseudoGPIO is based on a simple protocol based on the exchange of single-byte packets through a serial port.
 
-## General Packet Format
+### General Packet Format
 The protocol allows for 8 different commands, encoded in the 3 higher-order bits of the packet. The remaining bits shall be interpreted differently, according to the command being issued.
 <table>
   <tr align="center">
@@ -22,12 +28,12 @@ The protocol allows for 8 different commands, encoded in the 3 higher-order bits
 </table>
 
 
-## Commands
+### Commands
 No reply from the target shall be expected for any command, except where indicated.
 
 Commands that do not provide a reply shall be assumed to have been executed correctly.
 
-### Hello
+#### Hello
 <table>
   <tr align="center">
     <th>Bit</th>
@@ -74,7 +80,7 @@ This command checks if the target board is alive and interpreting commands corre
 
 Currently, only version 1 of the protocol is defined.
 
-### PinMode
+#### PinMode
 <table>
   <tr align="center">
     <th>Bit</th>
@@ -102,7 +108,7 @@ This command sets the mode of a pseudopin. `Mode` shall be interpreted as follow
 * 0: Input
 * 1: Output
 
-### DigitalRead
+#### DigitalRead
 <table>
   <tr align="center">
     <th>Bit</th>
@@ -130,7 +136,7 @@ This command requests the status of a digital pseudopin. The reply is a single b
 * 0: Low Level
 * 1: High Level
 
-### DigitalWrite
+#### DigitalWrite
 <table>
   <tr align="center">
     <th>Bit</th>
@@ -158,7 +164,7 @@ This command sets the level of a digital pseudopin. `Level` shall be interpreted
 * 0: Low Level
 * 1: High Level
 
-## Pseudopin Numbers
+### Pseudopin Numbers
 All commands involving a pseudopin number expect an integer in the range 0-15, which is generally mapped to the correspondingly numbered physical pin on the target board, but there might be exceptions depending on the particular target.
 
 * Arduino Uno/Nano and other ATmega328-based Arduinos: Pseudopins are mapped to the correspondingly numbered pins
